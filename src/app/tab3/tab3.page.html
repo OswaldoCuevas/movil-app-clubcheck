@@ -1,17 +1,46 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button id="open-modal">
+     
+        <ion-icon  name="add-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title> Oswaldo Moises Cuevas Torres </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Lista de suscripciones</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div id="container">
+    <div [ngClass]=" { 'success': subscription.days_remaining > 7,
+                       'warning': (subscription.days_remaining <= 7 && subscription.days_remaining > 0),
+                       'danger': subscription.days_remaining <= 0}" class="item-os" *ngFor="let subscription of subscriptions">
+      <div class="body" *ngIf="subscription.days_remaining > 7">
+        <ion-icon name="ellipse" class="success" ></ion-icon><span>Finaliza en {{subscription.days_remaining}} días</span>
+      </div>
+      <div class="body" *ngIf="subscription.days_remaining <= 7 && subscription.days_remaining > 0">
+        <ion-icon name="ellipse" class="warning" ></ion-icon><span>Finaliza en {{subscription.days_remaining}} días</span>
+      </div>
+      <div class="body" *ngIf="subscription.days_remaining == 1">
+        <ion-icon name="ellipse" class="warning" ></ion-icon><span>Finaliza en un día</span>
+      </div>
+      <div class="body" *ngIf="subscription.days_remaining <= 0">
+        <ion-icon name="ellipse" class="danger" ></ion-icon><span>Suscripción finalizada</span>
+      </div>
+      <div class="footer">
+        <span>Inicio: {{date(subscription.start_date)}} </span>
+        <span>Fin: {{date(subscription.ending_date)}}</span>
+      </div>
+    </div>
+    
+  </div>
 </ion-content>

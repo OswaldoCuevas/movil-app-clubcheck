@@ -1,8 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button id="open-modal">
+     
+        <ion-icon  name="add-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title> {{user}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,6 +16,50 @@
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button [strong]="true" (click)="cancel()">Cancelar</ion-button>
+          </ion-buttons>
+          <ion-title style="text-align: center;">Código</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirmar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding ion-text-center">
+        <span class="logo"><span>Club</span><span>Check</span></span>
+        <ion-input  #name class="ion-text-start margin-top" label="Ingrese el código"  label-placement="floating" fill="outline" placeholder="Código"></ion-input>
+        <div class="message-error" *ngIf="!codeValidity">
+          <ion-label color="danger">No se encontró el código</ion-label>
+          <ion-text color="danger" slot="end">
+            <ion-icon name="alert-circle"></ion-icon>
+          </ion-text>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  <div id="container">
+    <div class="container-logo-gym">
+      <span>{{customer}}</span>
+      <div class="img">
+        <img id="logo" src=""  alt="">     
+      </div>
+    </div>
+    <div id="chart">
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [xaxis]="chartOptions.xaxis"
+        [stroke]="chartOptions.stroke"
+        [tooltip]="chartOptions.tooltip"
+        [dataLabels]="chartOptions.dataLabels"
+      ></apx-chart>
+      <span> <ion-icon name="ellipse" class="danger"></ion-icon><span>Porcentaje de usuarios</span></span>
+    </div>
+    <ion-button expand="block" (click)="openModal()">Cambiar código</ion-button>
+  </div>
+  
 </ion-content>

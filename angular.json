@@ -18,6 +18,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "allowedCommonJsDependencies": ["apexcharts"],
             "inlineStyleLanguage": "scss",
             "assets": [
               {
@@ -32,7 +33,7 @@
               }
             ],
             "styles": ["src/theme/variables.scss", "src/global.scss"],
-            "scripts": []
+            "scripts": [ "node_modules/apexcharts/dist/apexcharts.min.js"]
           },
           "configurations": {
             "production": {
@@ -136,7 +137,8 @@
   "cli": {
     "schematicCollections": [
       "@ionic/angular-toolkit"
-    ]
+    ],
+    "analytics": "b296e927-5996-4ee2-b5f3-070a750167cd"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

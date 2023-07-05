@@ -1,0 +1,29 @@
+<ion-content [fullscreen]="true">
+  <div class="container-primary">
+    <div class="header"></div>
+    <span class="logo"><span>Club</span><span>Check</span></span>
+    <div id="wait">
+      <ion-progress-bar type="indeterminate" *ngIf="foundCode"></ion-progress-bar>
+      <div id="input" *ngIf="!foundCode">
+        <ion-input  #code id="code" (keyup)="RegisterCode($event)" maxlength="9" class="ion-text-start margin-top" label="Ingrese el código"  label-placement="floating" fill="outline" placeholder="Código"></ion-input>
+        <div class="message-error" *ngIf="error">
+          <ion-label color="danger">No se encontró el código</ion-label>
+          <ion-text color="danger" slot="end">
+            <ion-icon name="alert-circle"></ion-icon>
+          </ion-text>
+        </div>
+     
+      </div>
+    </div>
+    <div class="footer">
+      <div class="left">
+        <div class="cirlcle1"></div>
+        <div class="cirlcle2"></div>
+      </div>
+      <div class="rigth">
+        <div class="cirlcle1"></div>
+        <div class="cirlcle2"></div>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,91 @@
+.container-primary{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .logo{
+        font-size: 55px;
+        font-weight: bold;
+        font-family: "Helvetica";
+        margin-top: 20px;
+        & span:nth-child(1){
+            color: #9606E9;
+        }
+        & span:nth-child(2){
+            color: #EC21FF;
+        }
+      }
+      #wait{
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 300px;
+        #input{
+            width: 280px;
+            .message-error{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 5px 10px;
+            }
+        }
+      }
+    .header{
+        position: absolute;
+        width: 100%;
+        height: 40px;
+        background-color: #9C03C1;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        top:0;
+        
+    }
+    .footer{
+        position: absolute;
+        bottom:0;
+        height: 100px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        overflow: hidden;
+    }
+    .cirlcle1{ 
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        background-color: #9C03C1;
+    }
+    .cirlcle2{
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        background-color: #DF70F9;
+    }
+    .left{
+        width: 100px;
+        height: 100px;
+        .cirlcle1{ 
+            transform: translateX(-20px) translateY(15px);
+        }
+        .cirlcle2{
+            transform: translateX(30px) translateY(3px);
+        }
+    }
+    .rigth{
+        width: 100px;
+        height: 100px;
+        .cirlcle1{ 
+            transform: translateX(20px) translateY(15px);
+        }
+        .cirlcle2{
+            transform: translateX(-30px) translateY(3px);
+        }
+    }
+}
